@@ -1,0 +1,26 @@
+<?php
+/**
+* Created by Claudio Campos.
+* User: callcocam@gmail.com, contato@sigasmart.com.br
+* https://www.sigasmart.com.br
+*/
+namespace [namespace];
+
+use Livewire\Component; 
+use App\Traits\HasLayout;
+
+class [class] extends Component
+{
+   
+    use HasLayout;
+
+    public function mount()
+    {
+        $this->layoutData(['title' => 'Dashboard', 'sub_title' => '[class]']);
+    }
+
+    public function view()
+    {
+        return '[view]';
+    }
+}

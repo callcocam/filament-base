@@ -1,0 +1,16 @@
+<?php
+/**
+* Created by Claudio Campos.
+* User: callcocam@gmail.com, contato@sigasmart.com.br
+* https://www.sigasmart.com.br
+*/
+namespace {{ namespace }};
+
+{{ clusterImport }}use Filament\Pages\Page;
+
+class {{ class }} extends Page
+{
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+
+    protected static string $view = '{{ view }}';{{ clusterAssignment }}
+}

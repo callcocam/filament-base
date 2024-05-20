@@ -1,0 +1,16 @@
+<?php
+/**
+* Created by Claudio Campos.
+* User: callcocam@gmail.com, contato@sigasmart.com.br
+* https://www.sigasmart.com.br
+*/
+namespace {{ namespace }};
+
+
+use {{ resource }};
+use pxlrbt\FilamentActivityLog\Pages\ListActivities;
+
+class {{ resourcePageClass }} extends ListActivities
+{
+    protected static string $resource = {{ resourceClass }}::class;
+}
