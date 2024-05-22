@@ -22,7 +22,9 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 ## DOCUMETAÇÃO
+  
+- **[CURATOR File Manager](https://github.com/callcocam/filament-base/blob/main/doc/CURATOR.md)** 
+- **[GRAVATAR](https://github.com/callcocam/filament-base/blob/main/doc/GRAVATAR.md)** 
+- **[ACTIVITY-LOG](https://github.com/callcocam/filament-base/blob/main/doc/ACTIVITY-LOG.md)** 
  
-
-- **[CURATOR File Manager](https://github.com/webpaes-desenvolvimento/rpps-prod-v1/blob/main/doc/CURATOR.md)** 
  
