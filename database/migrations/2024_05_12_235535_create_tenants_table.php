@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('document')->unique()->nullable()->comment('Documento do tenant');
             $table->string('phone')->nullable()->comment('Telefone do tenant');
             $table->string('domain')->unique()->nullable()->comment('Domínio do tenant');
+            $table->string('prefix')->unique()->nullable()->comment('Prefixo do tenant');
+            $table->string('logo')->nullable()->comment('Logo do tenant');
             $table->enum('status', ['draft', 'published'])->default('published');
             $table->text('description')->nullable(); 
             $table->timestamps();

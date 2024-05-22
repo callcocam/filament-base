@@ -19,6 +19,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Core\Filament\Traits\HasTranslateResource;
+use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Leandrocfe\FilamentPtbrFormFields\Cep;
 use Leandrocfe\FilamentPtbrFormFields\Document;
 use Leandrocfe\FilamentPtbrFormFields\PhoneNumber;
@@ -35,42 +36,60 @@ class TenantResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label(static::translateForm("name"))
-                    ->placeholder(static::translateFormPlaceholder("name"))
-                    ->columnSpan([
-                        'md' => 7
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\Section::make()
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->label(static::translateForm("name"))
+                                    ->placeholder(static::translateFormPlaceholder("name"))
+                                    ->columnSpan([
+                                        'md' => 7
+                                    ])
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('email')
+                                    ->label(static::translateForm("email"))
+                                    ->placeholder(static::translateFormPlaceholder("email"))
+                                    ->email()
+                                    ->columnSpan([
+                                        'md' => 5
+                                    ]),
+                                Document::make('document')
+                                    ->cnpj()
+                                    ->label(static::translateForm("document"))
+                                    ->placeholder(static::translateFormPlaceholder("document"))
+                                    ->columnSpan([
+                                        'md' => 4
+                                    ]),
+                                PhoneNumber::make('phone')
+                                    ->label(static::translateForm("phone"))
+                                    ->placeholder(static::translateFormPlaceholder("phone"))
+                                    ->tel()
+                                    ->maxLength(255)
+                                    ->columnSpan([
+                                        'md' => 4
+                                    ]),
+                                Forms\Components\TextInput::make('domain')
+                                    ->label(static::translateForm("domain"))
+                                    ->placeholder(static::translateFormPlaceholder("domain"))
+                                    ->maxLength(255)
+                                    ->columnSpan([
+                                        'md' => 4
+                                    ]),
+                            ])->columnSpan([
+                                'md' => 2
+                            ])->columns(12),
+                        Forms\Components\Section::make()
+                            ->schema([
+                                CuratorPicker::make('logo')
+                                    ->label(static::translateForm("logo"))
+                                    ->columnSpanFull(),
+                            ])->columnSpan([
+                                'md' => 1
+                            ]),
+
                     ])
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->label(static::translateForm("email"))
-                    ->placeholder(static::translateFormPlaceholder("email"))
-                    ->email()
-                    ->columnSpan([
-                        'md' => 5
-                    ]),
-                Document::make('document')
-                    ->cnpj()
-                    ->label(static::translateForm("document"))
-                    ->placeholder(static::translateFormPlaceholder("document"))
-                    ->columnSpan([
-                        'md' => 4
-                    ]),
-                PhoneNumber::make('phone')
-                    ->label(static::translateForm("phone"))
-                    ->placeholder(static::translateFormPlaceholder("phone"))
-                    ->tel()
-                    ->maxLength(255)
-                    ->columnSpan([
-                        'md' => 4
-                    ]),
-                Forms\Components\TextInput::make('domain')
-                    ->label(static::translateForm("domain"))
-                    ->placeholder(static::translateFormPlaceholder("domain"))
-                    ->maxLength(255)
-                    ->columnSpan([
-                        'md' => 4
-                    ]),
+                    ->columns(3),
                 Forms\Components\Section::make('address')
                     ->heading(static::translateForm("address"))
                     ->relationship('address')

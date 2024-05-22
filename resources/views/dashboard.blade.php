@@ -12,7 +12,6 @@
                     {{ __("You're logged in!") }}
                 </div>
             </div>
-            <livewire:message-sent />
         </div>
     </div>
 </x-app-layout>

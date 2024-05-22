@@ -32,6 +32,14 @@ return [
                "label" => "Phone",
                "placeholder" => "Phone",
           ],
+          'prefix' => [
+               'label' => 'Prefixo',
+               'placeholder' => 'Prefixo',
+          ],
+          'logo' => [
+               'label' => 'Logo',
+               'placeholder' => 'Logo',
+          ],
           "domain" => [
                "label" => "Domain",
                "placeholder" => "Domain",
