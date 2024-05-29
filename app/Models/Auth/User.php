@@ -23,4 +23,11 @@ class User extends AbstractModel implements
     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail, HasRolesAndPermissions;
+    
+    public function scopeRole(Builder $query, $role): \Illuminate\Database\Eloquent\Builder|Builder
+    {
+        return $query->whereHas('roles', function ($query) use ($role) {
+            $query->where('slug', $role);
+        });
+    }
 }
