@@ -31,5 +31,6 @@
     "latitude": "Latitude",
     "longitude": "Longitude",
     "addressable_type": "Addressable type",
-    "addressable_id": "Addressable id"
+    "addressable_id": "Addressable id",
+    "image": "Image"
 }

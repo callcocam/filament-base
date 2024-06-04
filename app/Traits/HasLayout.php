@@ -25,7 +25,7 @@ trait HasLayout
     }
 
     public function render(){
-        return view($this->view(), $this->data)->layout($this->layout(), $this->layoutData);
+        return view($this->view(), array_merge($this->layoutData, $this->data))->layout($this->layout(), $this->layoutData);
     }
 
     public function view(){
