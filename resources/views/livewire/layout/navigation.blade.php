@@ -22,8 +22,21 @@ new class extends Component
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
+                        {{ __('DASHBOARD_MENU_LABEL') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')" wire:navigate>
+                        {{ __('ABOUT_MENU_LABEL') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('terms')" :active="request()->routeIs('terms')" wire:navigate>
+                        {{ __('TERMS_MENU_LABEL') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('policy')" :active="request()->routeIs('policy')" wire:navigate>
+                        {{ __('PRIVACY_MENU_LABEL') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" wire:navigate>
+                        {{ __('CONTACT_MENU_LABEL') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 
