@@ -10,7 +10,7 @@ return [
         'handle'        => 'Referência',
         'created_at'    => 'Criado em',
         'updated_at'    => 'Editado em',
-
+        'refresh' => 'Atualizar menus',
     ],
 
     'select-options' => [
@@ -34,5 +34,11 @@ return [
         'label' => 'Nome',
         'type'  => 'Tipo',
         'btn'   => 'Guardar',
+    ],
+    'refresh' => 'Atualizar menus',
+    'actions' => [
+        'refresh' => [
+            'label' => 'Atualizar menus',
+        ],
     ],
 ];

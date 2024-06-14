@@ -17,7 +17,7 @@ class NavigationItem
 
     public  null|string $slug;
 
-    protected null|string $navigationRoute;
+    public null|string $navigationRoute;
 
     public  null|array $navigationParams;
 

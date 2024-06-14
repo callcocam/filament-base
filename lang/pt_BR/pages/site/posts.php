@@ -6,5 +6,6 @@
 */
 
 return [
-     {{ formSchema }}
+     'navigationLabel' => 'Posts',
+     'slug' => 'posts',
 ];

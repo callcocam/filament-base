@@ -183,10 +183,10 @@ trait HandlesNavigationBuilder
                             if (!$state) {
                                 return;
                             }
-                            $properties = $this->getSelectPagePropertyValues($state);
+                            $properties = $this->getSelectPagePropertyValues($state); 
                             $set('icon', data_get($properties, 'navigationIcon'));
                             $set('slug', data_get($properties, 'slug'));
-                            $set('route', data_get($properties, 'route'));
+                            $set('route', data_get($properties, 'navigationRoute'));
                             $set('label', data_get($properties, 'navigationLabel'));
                             $set('type', data_get($properties, 'type'));
                             $set('order', data_get($properties, 'navigationOrder'));

@@ -1,5 +1,5 @@
 <div>
-    {{-- [quote] --}}
+    {{-- Do your work, then step back. --}}
      <x-slot name="header">
         <x-breadcrumbs :sub_title="$sub_title" :title="$title">
             <li>
