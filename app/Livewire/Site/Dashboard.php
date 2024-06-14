@@ -8,6 +8,7 @@ namespace App\Livewire\Site;
 
 use App\Livewire\Page\AbstractPage; 
 use App\Traits\HasLayout;
+use Illuminate\Support\Facades\Route;
 
 class Dashboard extends AbstractPage
 {
@@ -18,6 +19,12 @@ class Dashboard extends AbstractPage
     {
         $this->layoutData(['title' => 'Dashboard', 'sub_title' => 'Dashboard']);
     }
+
+    public static function route()
+    {
+        Route::get('/', static::class)->name(sprintf("%s.index", static::getNavigationRoute()));
+    }
+
 
     public function view()
     {

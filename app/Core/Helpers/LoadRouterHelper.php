@@ -13,6 +13,7 @@ use App\Models\Acl\Permission;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Finder\Finder;
 
 class LoadRouterHelper
 {
@@ -215,5 +216,24 @@ class LoadRouterHelper
         }
 
         return $result;
+    }
+
+
+    public static function createRoutes($params = [])
+    {
+        $pages  = Finder::create()->files()->in(app_path('Livewire/Site'))->name('*.php');
+
+        foreach ($pages as $page) {
+            $namespace =  str($page->getPath())->afterLast('app')->before('.php')->replace('/', '\\')->__toString();
+            $namespace = sprintf('App%s', $namespace);
+            $name = $page->getFilenameWithoutExtension();
+            $class = sprintf('%s\%s', $namespace, $name);
+
+            if (class_exists($class)) {
+                if (method_exists($class, 'route')) {
+                    $class::route();
+                }
+            }
+        }
     }
 }
