@@ -7,10 +7,10 @@
  */
 
 return [
-     "modelLabel" => "Address",
-     "pluralModelLabel" => "Addresses",
-     "navigationLabel" => "Addresses",
-     "navigationGroup" => "Models",
+     "modelLabel" => "Endereço",
+     "pluralModelLabel" => "Endereços",
+     "navigationLabel" => "Endereços",
+     "navigationGroup" => "Operacional",
      "forms" => [
           "name" => [
                "label" => "Nome",
@@ -21,36 +21,36 @@ return [
                "placeholder" => "Slug",
           ],
           "zip" => [
-               "label" => "Zip",
-               "placeholder" => "Zip",
+               "label" => "CEP",
+               "placeholder" => "CEP",
           ],
           "city" => [
-               "label" => "City",
-               "placeholder" => "City",
+               "label" => "Cidade",
+               "placeholder" => "Cidade",
           ],
           "state" => [
-               "label" => "State",
-               "placeholder" => "State",
+               "label" => "Estado/UF",
+               "placeholder" => "Estado/UF",
           ],
           "country" => [
-               "label" => "Country",
-               "placeholder" => "Country",
+               "label" => "País",
+               "placeholder" => "País",
           ],
           "street" => [
-               "label" => "Street",
-               "placeholder" => "Street",
+               "label" => "Rua/Logradouro",
+               "placeholder" => "Rua/Logradouro",
           ],
           "district" => [
-               "label" => "District",
-               "placeholder" => "District",
+               "label" => "Bairro/Distrito",
+               "placeholder" => "Bairro/Distrito",
           ],
           "number" => [
-               "label" => "Number",
-               "placeholder" => "Number",
+               "label" => "Número",
+               "placeholder" => "Número",
           ],
           "complement" => [
-               "label" => "Complement",
-               "placeholder" => "Complement",
+               "label" => "Complemento",
+               "placeholder" => "Complemento",
           ],
           "reference" => [
                "label" => "Reference",
@@ -63,15 +63,7 @@ return [
           "longitude" => [
                "label" => "Longitude",
                "placeholder" => "Longitude",
-          ],
-          "addressable_type" => [
-               "label" => "Addressable type",
-               "placeholder" => "Addressable type",
-          ],
-          "addressable_id" => [
-               "label" => "Addressable id",
-               "placeholder" => "Addressable id",
-          ],
+          ], 
           "status" => [
                "label" => "Status",
                "placeholder" => "Status",
@@ -85,23 +77,23 @@ return [
      "columns" => [
           "name" => "Nome",
 
-          "slug" => "Slug",
+          "slug" => "Slug", 
 
-          "zip" => "Zip",
+          "zip" => "CEP",
 
-          "city" => "City",
+          "city" => "Cidade",
 
-          "state" => "State",
+          "state" => "Estado/UF",
 
-          "country" => "Country",
+          "country" => "País",
 
-          "street" => "Street",
+          "street" => "Rua/Logradouro",
 
-          "district" => "District",
+          "district" => "Bairro/Distrito",
 
-          "number" => "Number",
+          "number" => "Número",
 
-          "complement" => "Complement",
+          "complement" => "Complemento",
 
           "reference" => "Reference",
 
@@ -109,13 +101,7 @@ return [
 
           "longitude" => "Longitude",
 
-          "addressable_type" => "Addressable type",
-
-          "addressable_id" => "Addressable id",
-
-          "status" => "Status",
-
-          "description" => "Descrição",
+          
 
      ],
 

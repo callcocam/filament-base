@@ -233,7 +233,7 @@ class TenantResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\UsersRelationManager::class, 
         ];
     }
 

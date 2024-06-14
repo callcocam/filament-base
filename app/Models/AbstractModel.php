@@ -47,4 +47,5 @@ class AbstractModel extends Model
                 ->saveSlugsTo($this->slugTo());
         }
     }
+    
 }

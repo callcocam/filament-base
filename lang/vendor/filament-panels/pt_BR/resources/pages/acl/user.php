@@ -7,9 +7,9 @@
  */
 
 return [
-     "modelLabel" => "User",
-     "pluralModelLabel" => "Users",
-     "navigationLabel" => "Users",
+     "modelLabel" => "Usuário",
+     "pluralModelLabel" => "Usuários",
+     "navigationLabel" => "Usuários",
      "navigationGroup" => "Operacional",
      "forms" => [
           "name" => [
@@ -25,20 +25,20 @@ return [
                "placeholder" => "Email",
           ],
           "phone" => [
-               "label" => "Phone",
-               "placeholder" => "Phone",
+               "label" => "Telefone",
+               "placeholder" => "Telefone",
           ],
           "document" => [
-               "label" => "Document",
-               "placeholder" => "Document",
+               "label" => "CPF/CNPJ",
+               "placeholder" => "CPF/CNPJ",
           ],
           "avatar_url" => [
                "label" => "Avatar url",
                "placeholder" => "Avatar url",
           ],
           "password" => [
-               "label" => "Password",
-               "placeholder" => "Password",
+               "label" => "Senha",
+               "placeholder" => "Senha",
           ],
           "status" => [
                "label" => "Status",
@@ -57,6 +57,9 @@ return [
                "label" => "Remember token",
                "placeholder" => "Remember token",
           ],
+          'roles' => [
+               'label' => 'Funções',
+          ]
      ],
      "columns" => [
           "name" => "Nome",
@@ -65,13 +68,13 @@ return [
 
           "email" => "Email",
 
-          "phone" => "Phone",
+          "phone" => "Telefone",
 
-          "document" => "Document",
+          "document" => "CPF/CNPJ",
 
           "avatar_url" => "Avatar url",
 
-          "password" => "Password",
+          "password" => "Senha",
 
           "status" => "Status",
 

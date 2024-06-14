@@ -48,7 +48,7 @@ class LandlordServiceProvider extends ServiceProvider
                 die(response("Nenhuma empresa cadastrada com esse endereço " . str_replace("admin.", "", request()->getHost()), 401));
             endif;
             if ($tenant) {
-                app(TenantManager::class)->addTenant("tenant_id", data_get($tenant, 'id'));
+                app(TenantManager::class)->addTenant("tenant_id", data_get($tenant, 'id')); 
                 config([
                     'app.tenant_id' => $tenant->id,
                     'app.name' => Str::limit($tenant->name, 20, '...'),

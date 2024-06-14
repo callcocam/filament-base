@@ -25,12 +25,12 @@ return [
                "placeholder" => "Email",
           ],
           "document" => [
-               "label" => "Document",
-               "placeholder" => "Document",
+               "label" => "Documento",
+               "placeholder" => "CPF/CNPJ",
           ],
           "phone" => [
-               "label" => "Phone",
-               "placeholder" => "Phone",
+               "label" => "Número de telefone",
+               "placeholder" => "Número de telefone",
           ],
           'prefix' => [
                'label' => 'Prefixo',
@@ -41,8 +41,8 @@ return [
                'placeholder' => 'Logo',
           ],
           "domain" => [
-               "label" => "Domain",
-               "placeholder" => "Domain",
+               "label" => "Dominio",
+               "placeholder" => "Dominio",
           ],
           'address' => [
                'label' => 'Endereço',
@@ -57,6 +57,9 @@ return [
                "label" => "Descrição",
                "placeholder" => "Descrição",
           ],
+          'roles' => [
+               'label' => 'Funções',
+          ]
      ],
      "columns" => [
           "name" => "Nome",
@@ -65,15 +68,19 @@ return [
 
           "email" => "Email",
 
-          "document" => "Document",
+          "document" => "CPF/CNPJ",
 
-          "phone" => "Phone",
+          "phone" => "Telefone",
 
-          "domain" => "Domain",
+          "domain" => "Dominio",
 
           "status" => "Status",
 
           "description" => "Descrição",
+
+          'roles' => 'Funções',
+
+          'avatar_url' => 'Avatar url',
 
      ],
 

@@ -11,6 +11,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\AbstractModel;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Tenant extends AbstractModel
 {
@@ -24,6 +25,8 @@ class Tenant extends AbstractModel
     protected $guarded = [
         'id'
     ];
+
+    protected $with = ['featuredImage'];
     // protected $appends = ['active'];
 
     //  public function getActiveAttribute()
@@ -45,4 +48,10 @@ class Tenant extends AbstractModel
     {
         return $this->morphOne(Address::class, 'addressable');
     }
+    
+    public function featuredImage(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'logo', 'id');
+    }
+
 }

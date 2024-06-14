@@ -21,8 +21,8 @@ new class extends Component {
     <div>
         <a href="/"
             class="text-sm font-bold text-slate-900 dark:text-slate-100 leading-none flex items-center mx-4">
-            @if (config('app.tenant.logo'))
-                <img src="{{ asset(config('app.tenant.logo')) }}" alt="{{ config('app.name') }}" class="h-8 w-auto" />
+            @if (config('app.tenant.featured_image'))
+                <img src="{{ asset(config('app.tenant.featured_image.url')) }}" alt="{{ config('app.name') }}" class="h-8 w-auto" />
             @endif
             <div class="hidden">
                 <span> {{ config('app.name') }}</span>

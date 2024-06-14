@@ -12,6 +12,7 @@ use App\Models\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -35,11 +36,9 @@ class User extends Authenticatable  implements FilamentUser, HasAvatar
     protected $hidden = [
         'password',
         'remember_token',
-    ];
+    ]; 
 
-    protected $appends = [
-        'user_avatar'
-    ];
+    protected $with = ['featuredImage'];
 
     /**
      * Get the attributes that should be cast.
@@ -67,5 +66,10 @@ class User extends Authenticatable  implements FilamentUser, HasAvatar
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
+    }
+    
+    public function featuredImage(): BelongsTo
+    {
+        return $this->belongsTo(Media::class, 'logo', 'id');
     }
 }
