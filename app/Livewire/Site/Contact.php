@@ -6,10 +6,10 @@
 */
 namespace App\Livewire\Site;
 
-use Livewire\Component; 
+use App\Livewire\Page\AbstractPage; 
 use App\Traits\HasLayout;
 
-class Contact extends Component
+class Contact extends AbstractPage
 {
    
     use HasLayout;
@@ -19,11 +19,7 @@ class Contact extends Component
         'email' => '',
         'message' => '',
     ];
-
-    public function mount()
-    {
-        $this->layoutData(['title' => 'Dashboard', 'sub_title' => 'CONTACT_TITLE_BREADCRUMP_PAGE']);
-    }
+ 
 
     public function send()
     {

@@ -15,6 +15,7 @@
         "croustibat/filament-jobs-monitor": "^2.4",
         "filament/filament": "^3.2",
         "jeffgreco13/filament-breezy": "^2.4",
+        "laravel/folio": "^1.1",
         "laravel/framework": "^11.0",
         "laravel/reverb": "@beta",
         "laravel/sanctum": "^4.0",

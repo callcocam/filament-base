@@ -13,8 +13,10 @@ use Filament\Forms\Get;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use App\Core\Filament\Plugins\Navigation\Builder\FilamentNavigation;
+use App\Core\Filament\Plugins\Navigation\Builder\Models\Navigation;
 use App\Core\Filament\Plugins\Navigation\Builder\NavigationGroup;
 use App\Core\Filament\Plugins\Navigation\Builder\NavigationItem;
+use App\Models\Page;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Set;
 use Illuminate\Support\Facades\Cache;
@@ -90,6 +92,10 @@ trait HandlesNavigationBuilder
                 $data[$parent->getGroup()] = $parent->getGroup();
             })->toArray();
 
+            Page::query()->get()->map(function (Page $page) use (&$data) {
+                $data[$page->slug] = $page->name;
+            });
+
             $data = array_filter($data);
 
             return $data;
@@ -129,9 +135,24 @@ trait HandlesNavigationBuilder
     protected function getSelectPagePropertyValues($page)
     {
         //vamos buscar as propriedades do modelo
-        $parents =  Cache::remember(sprintf('pages-id-values-%s', $page), 60 * 60 * 24, function () use ($page) {
-            return BuilderNavigation::make()->getNavigationsByPageId($page);
-        });
+        // $parents =  Cache::remember(sprintf('pages-id-values-%s', $page), 60 * 60 * 24, function () use ($page) {
+        //     return BuilderNavigation::make()->getNavigationsByPageId($page);
+        // });
+        $parents = BuilderNavigation::make()->loadPages()->getNavigationsByPageId($page);
+        if (!$parents) {
+            $parents = BuilderNavigation::make()->getNavigationsByGroup($page);
+            if (!$parents) {
+                $parents = Page::where('slug', $page)->first();
+                if ($parents) {
+                    $parents = $parents->toArray(); 
+                    $parents['navigationLabel'] = data_get($parents, 'name');
+                    $parents['navigationIcon'] = data_get($parents, 'icon');
+                    $parents['navigationOrder'] = data_get($parents, 'order', 0);
+                    return $parents;
+                }
+            }
+        }
+
         if ($parents) {
             $vars = get_object_vars($parents);
             return $vars;

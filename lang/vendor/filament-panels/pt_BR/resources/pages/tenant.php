@@ -10,7 +10,7 @@ return [
      "modelLabel" => "Tenant",
      "pluralModelLabel" => "Tenants",
      "navigationLabel" => "Tenants",
-     "navigationGroup" => "Models",
+     "navigationGroup" => "Operacional",
      "forms" => [
           "name" => [
                "label" => "Nome",

@@ -32,7 +32,7 @@ class MyMakeResourceCommand extends Command
 
     protected $description = 'Create a new Filament resource class and default page classes';
 
-    protected $signature = 'make:my-filament-resource {name?} {--model-namespace=} {--soft-deletes} {--view} {--G|generate} {--S|simple} {--panel=} {--F|force} {--L|log-activity} {--T|traduction}';
+    protected $signature = 'make:my-filament-resource {name?} {--model-namespace=} {--soft-deletes} {--view} {--generate} {--S|simple} {--panel=} {--F|force} {--log-activity} {--traduction}';
 
     public function handle(): int
     {

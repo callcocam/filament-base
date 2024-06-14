@@ -6,10 +6,10 @@
 */
 namespace App\Livewire\Site;
 
-use Livewire\Component; 
+use App\Livewire\Page\AbstractPage; 
 use App\Traits\HasLayout;
 
-class Dashboard extends Component
+class Dashboard extends AbstractPage
 {
    
     use HasLayout;

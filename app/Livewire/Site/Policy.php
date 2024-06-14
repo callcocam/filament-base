@@ -6,12 +6,12 @@
 */
 namespace App\Livewire\Site;
 
-use App\Models\Policy as ModelsPolicy;
-use Livewire\Component; 
+use App\Livewire\Page\AbstractPage;
+use App\Models\Policy as ModelsPolicy; 
 use App\Traits\HasLayout;
 use Livewire\Attributes\Computed;
 
-class Policy extends Component
+class Policy extends AbstractPage
 {
    
     use HasLayout;

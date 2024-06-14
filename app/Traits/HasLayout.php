@@ -13,9 +13,7 @@ trait HasLayout
 
     public $data = [];
 
-    public $params = [];
-
-    public $title;
+    public $params = []; 
 
     public $model;
 

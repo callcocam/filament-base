@@ -6,21 +6,16 @@
 */
 namespace App\Livewire\Site;
 
-use App\Models\Term;
-use Livewire\Component; 
+use App\Livewire\Page\AbstractPage;
+use App\Models\Term; 
 use App\Traits\HasLayout;
 use Livewire\Attributes\Computed;
 
-class Terms extends Component
+class Terms extends AbstractPage
 {
    
     use HasLayout;
-
-    public function mount()
-    {
-        $this->layoutData(['title' => 'Dashboard', 'sub_title' => 'TERMS_TITLE_BREADCRUMP_PAGE']);
-    }
-
+ 
     
     #[Computed()]
     public function terms()

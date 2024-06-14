@@ -116,6 +116,17 @@ trait HasTranslateResource
         return   __($path, $replace);
     }
 
+    
+    public static function translateSection($name, $resource = null, $replace = []): string
+    {
+        if (!$resource)
+            $resource = static::getBasePath()->__toString();
+
+        $path = sprintf('filament-panels::resources/pages%s.sections.%s', $resource, $name);
+
+        return   __($path, $replace);
+    }
+
     public static function translateActionLabel($name, $resource = null, $replace = []): string
     {
         if (!$resource)

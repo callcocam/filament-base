@@ -32,5 +32,9 @@
     "longitude": "Longitude",
     "addressable_type": "Addressable type",
     "addressable_id": "Addressable id",
-    "image": "Image"
+    "image": "Image",
+    "route": "Route",
+    "icon": "Icon",
+    "layout": "Layout",
+    "template": "Template"
 }

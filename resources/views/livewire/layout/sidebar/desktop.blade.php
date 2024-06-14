@@ -2,9 +2,11 @@
 
 use App\Livewire\Actions\Logout;
 use Livewire\Volt\Component;
+use Livewire\Attributes\Computed;
+use App\Livewire\Page\Navigation\Navigation;
+use Illuminate\Support\Facades\Cache;
 
-new class extends Component
-{
+new class extends Component {
     /**
      * Log the current user out of the application.
      */
@@ -15,40 +17,75 @@ new class extends Component
         $this->redirect('/', navigate: true);
     }
 }; ?>
-<div class="hidden sm:flex sm:items-center sm:ms-6">
-    @auth
-    <x-dropdown align="right" width="48">
-        <x-slot name="trigger">
-            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                <div x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
-
-                <div class="ms-1">
-                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </div>
-            </button>
-        </x-slot>
-
-        <x-slot name="content">
-            <x-dropdown-link :href="route('profile')" wire:navigate>
-                {{ __('Profile') }}
-            </x-dropdown-link>
-
-            <!-- Authentication -->
-            <button wire:click="logout" class="w-full text-start">
-                <x-dropdown-link>
-                    {{ __('Log Out') }}
-                </x-dropdown-link>
-            </button>
-        </x-slot>
-    </x-dropdown>
-    @else
-    <x-nav-link :href="route('login')" :active="request()->routeIs('login')" wire:navigate>
-        {{ __('Login') }}
-    </x-nav-link>
-    <x-nav-link :href="route('register')" :active="request()->routeIs('register')" wire:navigate>
-        {{ __('Register') }}
-    </x-nav-link>
-    @endauth
+<div class="hidden md:flex items-center">
+    <div>
+        <a href="/"
+            class="text-sm font-bold text-slate-900 dark:text-slate-100 leading-none flex items-center mx-4">
+            @if (config('app.tenant.logo'))
+                <img src="{{ asset(config('app.tenant.logo')) }}" alt="{{ config('app.name') }}" class="h-8 w-auto" />
+            @endif
+            <div class="hidden">
+                <span> {{ config('app.name') }}</span>
+                <p class="text-xs text-gray-500 dark:text-gray-300">
+                    {{ config('app.tenant.email') }}
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="flex items-center space-x-4">
+        @if ($menus = data_get($menus, 'items', []))  
+            @foreach ($menus as $menu)
+                @if ($childrens = data_get($menu, 'children', []))
+                    <x-menu.link.dropdown x-data="dropdown()">
+                        <x-slot name="trigger">
+                            <x-menu.link.button type="button">
+                                <span>
+                                    {{ data_get($menu, 'label') }}
+                                </span>
+                                <x-heroicon-o-chevron-down
+                                    class="w-4 h-4 ml-auto duration-200 transform group-hover:-rotate-180" />
+                            </x-menu.link.button>
+                        </x-slot>
+                        <x-slot name="content">
+                            <div class="flex flex-col">
+                                @foreach (array_chunk($childrens, data_get($menu, 'chunk', 100)) as $items)
+                                    @if (!$loop->first)
+                                        <div
+                                            class="border-t-2 border-t-slate-100 dark:border-t-slate-700 shadow-lg mb-2">
+                                        </div>
+                                    @endif
+                                    @foreach ($items as $item)
+                                        @if ($link = data_get($item, 'data.url'))
+                                            <x-menu.link.sub-desktop :href="$link"
+                                                target="{{ data_get($item, 'data.target') }}">
+                                                {{ data_get($menu, 'label') }}
+                                            </x-menu.link.sub-desktop>
+                                        @else
+                                            @if (Route::has(data_get($item, 'route')))
+                                                <x-menu.link.sub-desktop :href="route(data_get($item, 'route'))" :active="request()->routeIs(data_get($item, 'route'))"
+                                                    wire:navigate target="{{ data_get($item, 'data.target') }}">
+                                                    {{ data_get($item, 'label') }}
+                                                </x-menu.link.sub-desktop>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                            </div>
+                        </x-slot>
+                    </x-menu.link.dropdown>
+                @else
+                    @if ($link = data_get($menu, 'data.url')) 
+                        <x-menu.link.desktop :href="$link" target="{{ data_get($menu, 'data.target', '_self') }}">
+                            {{ data_get($menu, 'label') }}
+                        </x-menu.link.desktop>
+                    @else
+                    <x-menu.link.desktop :href="route(data_get($menu, 'route'), ['page'=>data_get($menu, 'slug')])" :active="request()->routeIs(data_get($menu, 'route'))" wire:navigate
+                        target="{{ data_get($menu, 'data.target', '_self') }}">
+                        {{ data_get($menu, 'label') }}
+                    </x-menu.link.desktop>
+                    @endif
+                @endif
+            @endforeach
+        @endif
+    </div>
 </div>
