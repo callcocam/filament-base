@@ -14,6 +14,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
@@ -23,4 +24,11 @@ class User extends AbstractModel implements
     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail, HasRolesAndPermissions;
+    
+    public function scopeRole(Builder $query, $role): \Illuminate\Database\Eloquent\Builder|Builder
+    {
+        return $query->whereHas('roles', function ($query) use ($role) {
+            $query->where('slug', $role);
+        });
+    }
 }
