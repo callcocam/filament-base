@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Core\Filament\Plugins\Navigation\Builder\FilamentNavigation;
 use Awcodes\FilamentGravatar\GravatarPlugin;
 use Awcodes\FilamentGravatar\GravatarProvider;
 use BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
@@ -81,7 +82,11 @@ class AdminPanelProvider extends PanelProvider
                         ->navigationSort(3)
                         ->navigationCountBadge()
                         // ->registerNavigation(false)
-                        ->defaultListView('grid' || 'list')
+                        ->defaultListView('grid' || 'list'),
+                    FilamentNavigation::make()
+                    // ->withExtraFields([
+
+                    // ])
                 ]
             )
             ->authMiddleware([
