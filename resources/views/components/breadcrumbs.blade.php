@@ -12,7 +12,7 @@
     <ul
         class="prd-btn-2 z-4 absolute -bottom-4 flex items-center justify-center bg-gradient-primary rounded-full border border-gray-200 px-2">
         <li>
-            <a href="{{ route('dashboard') }}"
+            <a href="{{ route('pages.site.dashboard.index') }}"
                 class=" text-primary-100 px-2 py-2 rounded-md text-sm flex space-x-2 items-center justify-center">
                 <x-heroicon-o-home class="h-4 w-4 text-purple-800" />
                 <span> {{ __('Home') }}</span>
