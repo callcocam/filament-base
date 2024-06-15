@@ -72,10 +72,7 @@ class UserResource extends Resource
     {
 
         return $table
-            ->columns([
-                Tables\Columns\ImageColumn::make('user_avatar')
-                    ->circular()
-                    ->label(static::translateColumnLabel("avatar_url")),
+            ->columns([ 
                 Tables\Columns\TextColumn::make('name')
                     ->label(static::translateColumnLabel("name"))
                     ->searchable(),
@@ -130,6 +127,6 @@ class UserResource extends Resource
         return parent::getEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
-            ]);
+            ])->tenant();
     }
 }

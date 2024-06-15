@@ -72,4 +72,9 @@ class User extends Authenticatable  implements FilamentUser, HasAvatar
     {
         return $this->belongsTo(Media::class, 'logo', 'id');
     }
+
+    public function scopeTenant($query)
+    { 
+        return $query->where('tenant_id', config('app.tenant.id'));
+    }
 }
