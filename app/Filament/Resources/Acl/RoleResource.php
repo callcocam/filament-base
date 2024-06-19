@@ -43,7 +43,7 @@ class RoleResource extends Resource
                 //permissions
                 Forms\Components\CheckboxList::make('permissions')
                     ->label(static::translateForm('permissions'))
-                    ->relationship('permissions', 'name')
+                    ->relationship('permissions', 'name') 
                     ->searchable()
                     ->columnSpanFull(),
                 Forms\Components\Radio::make('special')

@@ -12,10 +12,11 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Get;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use App\Core\Filament\Plugins\Navigation\Builder\FilamentNavigation; 
+use App\Core\Filament\Plugins\Navigation\Builder\FilamentNavigation;
 use App\Core\Filament\Plugins\Navigation\Builder\NavigationItem;
 use App\Models\Page;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Set;
 use Illuminate\Support\Facades\Cache;
 
@@ -142,7 +143,7 @@ trait HandlesNavigationBuilder
             if (!$parents) {
                 $parents = Page::where('slug', $page)->first();
                 if ($parents) {
-                    $parents = $parents->toArray(); 
+                    $parents = $parents->toArray();
                     $parents['navigationLabel'] = data_get($parents, 'name');
                     $parents['navigationIcon'] = data_get($parents, 'icon');
                     $parents['navigationOrder'] = data_get($parents, 'order', 0);
@@ -181,7 +182,7 @@ trait HandlesNavigationBuilder
                             if (!$state) {
                                 return;
                             }
-                            $properties = $this->getSelectPagePropertyValues($state); 
+                            $properties = $this->getSelectPagePropertyValues($state);
                             $set('icon', data_get($properties, 'navigationIcon'));
                             $set('slug', data_get($properties, 'slug'));
                             $set('route', data_get($properties, 'navigationRoute'));
@@ -207,6 +208,9 @@ trait HandlesNavigationBuilder
                         ->label(__('filament-navigation::filament-navigation.items-modal.route')),
                     TextInput::make('chunk')
                         ->label(__('filament-navigation::filament-navigation.items-modal.chunk')),
+                    TagsInput::make('position')
+                        ->label(__('filament-navigation::filament-navigation.items-modal.position'))
+                        ->suggestions(['top', 'bottom', 'left', 'right']),
                     Repeater::make('params')
                         ->label(__('filament-navigation::filament-navigation.items-modal.params'))
                         ->collapsed()

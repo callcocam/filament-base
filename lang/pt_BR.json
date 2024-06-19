@@ -51,6 +51,11 @@
     "ABOUT_DESCRIPTION_PAGE": "Sobre",
     "POLICY_TITLE_BREADCRUMP_PAGE": "Pagina de Política de Privacidade",
     "POLICY_SUBTITLE_PAGE": "Política de Privacidade",
-    "POLICY_DESCRIPTION_PAGE": "Política de Privacidade"
+    "POLICY_DESCRIPTION_PAGE": "Política de Privacidade",
+    "Admin Dashboard": "Painel de Administração",
+    "Admin My-Profile": "Meu Perfil",
+    "Admin Abouts Index": "Sobre",
+    "Admin Acl Users Index": "Visualizar Usuários",
+    "Admin Acl Users Edit": "Editar Usuário"
 
 }

@@ -40,6 +40,7 @@ return [
         'params'        => 'Parâmetros',
         'param_key'     => 'Chave',
         'param_value'   => 'Valor',
+        'position'      => 'Posição',
         'chunk'         => 'Chunk',
         'type'          => 'Tipo',
         'btn'           => 'Salvar',

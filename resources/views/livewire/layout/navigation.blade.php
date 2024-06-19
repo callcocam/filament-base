@@ -14,7 +14,7 @@ new class extends Component {}; ?>
         <div class="flex items-center justify-between h-full  mx-auto relative ">
             <div class="w-full">
                 <div class="md:flex">
-                    <livewire:layout.sidebar.desktop /> 
+                    <livewire:layout.sidebar.desktop/> 
                     <livewire:layout.sidebar.mobile />
                 </div>
             </div>

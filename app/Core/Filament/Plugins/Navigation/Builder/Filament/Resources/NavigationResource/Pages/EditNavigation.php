@@ -26,7 +26,7 @@ class EditNavigation extends EditRecord
     public function mount(int|string $record): void
     {
 
-        parent::mount($record);
+        parent::mount($record); 
     }
     
     public function afterSave(): void
