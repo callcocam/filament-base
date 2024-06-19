@@ -115,13 +115,13 @@ new class extends Component {
                         </div>
                     </x-menu.link.mobile>
                     {{-- _x_darkMode_on --}}
-                    <button type="button" x-on:click="toggle" class="w-full text-start">
+                    <button type="button" x-on:click="$store.darkMode.toggle()" class="w-full text-start">
                         <x-menu.link.mobile>
-                            <span x-show="darkMode" class="flex items-center space-x-1">
+                            <span x-show="$store.darkMode.dark" class="flex items-center space-x-1">
                                 <x-heroicon-o-sun class="h-4 w-4 text-yellow-400" />
                                 <span> {{ __('Light Mode') }} </span>
                             </span>
-                            <span x-show="!darkMode" class="flex items-center space-x-1">
+                            <span x-show="!$store.darkMode.dark" class="flex items-center space-x-1">
                                 <x-heroicon-o-moon class="h-4 w-4 text-gray-400" />
                                 <span> {{ __('Dark Mode') }} </span>
                             </span>
