@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 use App\Core\Filament\Plugins\Navigation\Builder\FilamentNavigation;
 use App\Core\Filament\Plugins\Navigation\Builder\NavigationItem;
 use App\Models\Page;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Set;
@@ -196,18 +197,34 @@ trait HandlesNavigationBuilder
                                 'target' => data_get($properties, 'navigationTarget'),
                             ]);
                         }),
-                    TextInput::make('label')
-                        ->label(__('filament-navigation::filament-navigation.items-modal.label'))
-                        ->required(),
-                    TextInput::make('icon')
-                        ->label(__('filament-navigation::filament-navigation.items-modal.icon')),
-                    TextInput::make('slug')
-                        ->label(__('filament-navigation::filament-navigation.items-modal.slug'))
-                        ->required(),
-                    TextInput::make('route')
-                        ->label(__('filament-navigation::filament-navigation.items-modal.route')),
-                    TextInput::make('chunk')
-                        ->label(__('filament-navigation::filament-navigation.items-modal.chunk')),
+                    Grid::make()
+                        ->columns(2)
+                        ->schema([
+                            TextInput::make('subtitle')
+                                ->label(__('filament-navigation::filament-navigation.items-modal.subtitle')),
+                            TextInput::make('label')
+                                ->label(__('filament-navigation::filament-navigation.items-modal.label'))
+                                ->required(),
+                        ]),
+                    Grid::make()
+                        ->columns(2)
+                        ->schema([
+                            TextInput::make('slug')
+                                ->label(__('filament-navigation::filament-navigation.items-modal.slug'))
+                                ->required(),
+                            TextInput::make('route')
+                                ->label(__('filament-navigation::filament-navigation.items-modal.route'))
+                        ]),
+                    Grid::make()
+                        ->columns(3)
+                        ->schema([
+                            TextInput::make('icon')
+                                ->label(__('filament-navigation::filament-navigation.items-modal.icon'))
+                                ->columnSpan(2),
+                            TextInput::make('chunk')
+                                ->label(__('filament-navigation::filament-navigation.items-modal.chunk'))
+                                ->columnSpan(1),
+                        ]),
                     TagsInput::make('position')
                         ->label(__('filament-navigation::filament-navigation.items-modal.position'))
                         ->suggestions(['top', 'bottom', 'left', 'right']),
@@ -252,12 +269,6 @@ trait HandlesNavigationBuilder
                             $type = $get('type');
 
                             return FilamentNavigation::get()->getItemTypes()[$type]['fields'] ?? [];
-                        }),
-                    Group::make()
-                        ->statePath('data')
-                        ->visible(fn (Component $component) => $component->evaluate(FilamentNavigation::get()->getExtraFields()) !== [])
-                        ->schema(function (Component $component) {
-                            return FilamentNavigation::get()->getExtraFields();
                         }),
                 ])
                 ->modalWidth('lg')

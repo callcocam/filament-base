@@ -48,38 +48,17 @@ new class extends Component {
                             </x-menu.link.button>
                         </x-slot>
                         <x-slot name="content">
-                            <div class="flex flex-col">
-                                @foreach (array_chunk($childrens, data_get($menu, 'chunk', 100)) as $items)
-                                    @if (!$loop->first)
-                                        <div
-                                            class="border-t-2 border-t-slate-100 dark:border-t-slate-700 shadow-lg mb-2">
-                                        </div>
-                                    @endif
-                                    @if ($loop->first)
-                                        <div
-                                            class="border-t-2 border-t-slate-100 dark:border-t-slate-700 shadow-lg mb-2">
-                                            {{ data_get($items[0], 'label') }}
-                                        </div>
-                                    @endif
-                                    @foreach ($items as $Sitem) 
-                                        @foreach (data_get($Sitem, 'children', []) as $item)
-                                            @if ($link = data_get($item, 'data.url'))
-                                                <x-menu.link.sub-desktop :href="$link"
-                                                    target="{{ data_get($item, 'data.target') }}">
-                                                    {{ data_get($menu, 'label') }}
-                                                </x-menu.link.sub-desktop>
-                                            @else
-                                                @if (Route::has(data_get($item, 'route')))
-                                                    <x-menu.link.sub-desktop :href="route(data_get($item, 'route'))" :active="request()->routeIs(data_get($item, 'route'))"
-                                                        wire:navigate target="{{ data_get($item, 'data.target') }}">
-                                                        {{ data_get($item, 'label') }}
-                                                    </x-menu.link.sub-desktop>
-                                                @endif
-                                            @endif
-                                        @endforeach
-                                    @endforeach
-                                @endforeach
-                            </div>
+                            @dd($childrens)
+                            @foreach ($childrens as $children)
+                                @if ($items = data_get($children, 'children'))
+                                    <x-menu.link.dropdown-items :items="$items" :subtitle="data_get($children, 'subtitle')" />
+                                @endif
+                            @endforeach
+                            @foreach ($childrens as $child)
+                                @if (!data_get($child, 'children'))
+                                    <x-menu.link.dropdown-items :items="$child" />
+                                @endif
+                            @endforeach
                         </x-slot>
                     </x-menu.link.dropdown>
                 @else

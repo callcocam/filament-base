@@ -32,6 +32,7 @@ return [
 
     'items-modal' => [
         'title'         => 'Item',
+        'subtitle'      => 'Subtítulo',
         'label'         => 'Label',
         'name'          => 'Nome',
         'icon'          => 'Ícone',
